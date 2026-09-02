@@ -1,6 +1,6 @@
 {
   "name": "@fathom/fathom-analytics",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Use the API to manage sites, events and milestones, or pull custom reports. The base URL is https://api.usefathom.com/v1.",
   "author": "Fathom Analytics API",
   "repository": {
