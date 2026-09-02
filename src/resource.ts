@@ -1,11 +1,11 @@
 // File generated from our OpenAPI spec by Scalar. See README.md for details.
 
-import type { FathomAnalyticsAPI } from './client';
+import type { fathom } from './client';
 
 export abstract class APIResource {
-  protected _client: FathomAnalyticsAPI;
+  protected _client: fathom;
 
-  constructor(client: FathomAnalyticsAPI) {
+  constructor(client: fathom) {
     this._client = client;
   }
 }
