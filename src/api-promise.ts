@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Scalar. See README.md for details.
 
-import type { FathomAnalyticsAPI } from './client';
+import type { fathom } from './client';
 import type { FinalRequestOptions } from './internal/request-options';
 
 export type APIResponseProps = {
@@ -12,7 +12,7 @@ export type APIResponseProps = {
   readonly startTime?: number | undefined;
 };
 
-export type ParseResponse<T> = (client: FathomAnalyticsAPI, props: APIResponseProps) => T | Promise<T>;
+export type ParseResponse<T> = (client: fathom, props: APIResponseProps) => T | Promise<T>;
 
 export const defaultParseResponse = async <T>(_client: unknown, props: APIResponseProps): Promise<T> => {
   const { response } = props;
@@ -31,7 +31,7 @@ export class APIPromise<T> extends Promise<T> {
   private parsedPromise: Promise<T> | undefined;
 
   constructor(
-    private readonly client: FathomAnalyticsAPI,
+    private readonly client: fathom,
     private readonly responsePromise: Promise<APIResponseProps>,
     private readonly parseResponse: ParseResponse<T> = defaultParseResponse,
   ) {

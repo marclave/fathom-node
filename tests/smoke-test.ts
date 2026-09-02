@@ -13,10 +13,10 @@ import { writeFileSync } from 'node:fs';
 
 // The package exports the client class. The client reads auth and the base URL from the
 // environment, so it needs no constructor options to point at a server.
-import FathomAnalyticsAPI from '@fathom/fathom-analytics';
+import fathom from '@fathom/fathom-analytics';
 
 // One shared client runs every case.
-const client = new FathomAnalyticsAPI();
+const client = new fathom();
 
 // The result of running one case, collected for the JSON report or the printed table.
 type SmokeResult = {

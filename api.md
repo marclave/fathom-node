@@ -36,9 +36,9 @@ Complete reference of every operation, grouped by resource. See [the README](./R
 ## Setup
 
 ```ts
-import FathomAnalyticsAPI from '@fathom/fathom-analytics';
+import fathom from '@fathom/fathom-analytics';
 
-const client = new FathomAnalyticsAPI({
+const client = new fathom({
   bearerAuth: process.env['BEARER_AUTH'], // defaults to the BEARER_AUTH env var
 });
 ```
