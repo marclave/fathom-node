@@ -16,9 +16,9 @@ npm install @fathom/fathom-analytics
 ## Client setup and authentication
 
 ```ts
-import FathomAnalyticsAPI from '@fathom/fathom-analytics';
+import fathom from '@fathom/fathom-analytics';
 
-const client = new FathomAnalyticsAPI({
+const client = new fathom({
   bearerAuth: process.env['BEARER_AUTH'], // defaults to the BEARER_AUTH env var
 });
 ```
@@ -30,9 +30,9 @@ Provide credentials using the options below. Environment variables are read auto
 ## Calling operations
 
 ```ts
-import FathomAnalyticsAPI from '@fathom/fathom-analytics';
+import fathom from '@fathom/fathom-analytics';
 
-const client = new FathomAnalyticsAPI({
+const client = new fathom({
   bearerAuth: process.env['BEARER_AUTH'], // defaults to the BEARER_AUTH env var
 });
 

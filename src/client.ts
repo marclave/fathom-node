@@ -126,12 +126,12 @@ export interface ClientOptions {
   logger?: Logger | undefined;
 }
 
-export type FathomAnalyticsAPIOptions = ClientOptions;
+export type fathomOptions = ClientOptions;
 
 /**
  * API Client for interfacing with the FathomAnalyticsApi API.
  */
-export class FathomAnalyticsAPI {
+export class fathom {
   bearerAuth: string | AuthTokenProvider;
 
   baseURL: string;
@@ -165,8 +165,8 @@ export class FathomAnalyticsAPI {
     ...opts
   }: ClientOptions = {}) {
     if (bearerAuth === undefined) {
-      throw new Errors.FathomAnalyticsAPIError(
-        "The BEARER_AUTH environment variable is missing or empty; either provide it, or instantiate the FathomAnalyticsAPI client with an bearerAuth option, like new FathomAnalyticsAPI({ bearerAuth: 'My Bearer Auth' }).",
+      throw new Errors.fathomError(
+        "The BEARER_AUTH environment variable is missing or empty; either provide it, or instantiate the fathom client with an bearerAuth option, like new fathom({ bearerAuth: 'My Bearer Auth' }).",
       );
     }
 
@@ -178,7 +178,7 @@ export class FathomAnalyticsAPI {
     const baseURLOverridden = baseURL !== null && baseURL !== undefined && baseURL !== '';
     const defaultBaseURL = 'https://api.usefathom.com/v1';
     this.baseURL = options.baseURL || defaultBaseURL;
-    this.timeout = options.timeout ?? FathomAnalyticsAPI.DEFAULT_TIMEOUT /* 1 minute */;
+    this.timeout = options.timeout ?? fathom.DEFAULT_TIMEOUT /* 1 minute */;
     this.logger = options.logger ?? console;
     const defaultLogLevel = 'warn';
     // Set default logLevel early so that we can log a warning in parseLogLevel.
@@ -801,8 +801,7 @@ export class FathomAnalyticsAPI {
   ): Promise<string | undefined> {
     if (value == null) return undefined;
     const token = typeof value === 'function' ? await value() : value;
-    if (!token)
-      throw new Errors.FathomAnalyticsAPIError(`Expected '${optionName}' to resolve to a non-empty string.`);
+    if (!token) throw new Errors.fathomError(`Expected '${optionName}' to resolve to a non-empty string.`);
     return token;
   }
 
@@ -813,14 +812,14 @@ export class FathomAnalyticsAPI {
     if (value == null) return undefined;
     const token = typeof value === 'function' ? value() : value;
     if (typeof token !== 'string' || !token)
-      throw new Errors.FathomAnalyticsAPIError(`Expected '${optionName}' to resolve to a non-empty string.`);
+      throw new Errors.fathomError(`Expected '${optionName}' to resolve to a non-empty string.`);
     return token;
   }
 
-  static FathomAnalyticsAPI = this;
+  static fathom = this;
   static DEFAULT_TIMEOUT = 60000; // 1 minute
 
-  static FathomAnalyticsAPIError = Errors.FathomAnalyticsAPIError;
+  static fathomError = Errors.fathomError;
   static APIError = Errors.APIError;
   static APIConnectionError = Errors.APIConnectionError;
   static APIConnectionTimeoutError = Errors.APIConnectionTimeoutError;
@@ -843,13 +842,13 @@ export class FathomAnalyticsAPI {
   reports: Reports = new Reports(this);
 }
 
-FathomAnalyticsAPI.Account = Account;
-FathomAnalyticsAPI.Sites = Sites;
-FathomAnalyticsAPI.Events = Events;
-FathomAnalyticsAPI.Milestones = Milestones;
-FathomAnalyticsAPI.Reports = Reports;
+fathom.Account = Account;
+fathom.Sites = Sites;
+fathom.Events = Events;
+fathom.Milestones = Milestones;
+fathom.Reports = Reports;
 
-export declare namespace FathomAnalyticsAPI {
+export declare namespace fathom {
   export type RequestOptions = Opts.RequestOptions;
   export { Account as Account };
 

@@ -33,9 +33,9 @@ npm install @fathom/fathom-analytics
 ## Usage
 
 ```ts
-import FathomAnalyticsAPI from '@fathom/fathom-analytics';
+import fathom from '@fathom/fathom-analytics';
 
-const client = new FathomAnalyticsAPI({
+const client = new fathom({
   bearerAuth: process.env['BEARER_AUTH'], // defaults to the BEARER_AUTH env var
 });
 
@@ -88,9 +88,9 @@ Documented error statuses: `400`, `401`, `410`.
 Configure the generated client by setting any of these options when you create it.
 
 ```ts
-import FathomAnalyticsAPI from '@fathom/fathom-analytics';
+import fathom from '@fathom/fathom-analytics';
 
-const client = new FathomAnalyticsAPI({
+const client = new fathom({
   timeout: 60000,
   maxRetries: 2,
   logLevel: 'debug',
